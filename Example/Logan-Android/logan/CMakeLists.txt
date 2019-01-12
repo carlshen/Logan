@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.4.1)
 SET (CMAKE_C_FLAGS_DEBUG          "-g")
 SET (CMAKE_C_FLAGS_RELEASE        "-O2 -DNDEBUG")
 
-set(EXTERN_DIR ../../../Logan/Clogan)
+set(EXTERN_DIR ../../Clogan)
 
 add_subdirectory(${EXTERN_DIR} clogan.out)
 

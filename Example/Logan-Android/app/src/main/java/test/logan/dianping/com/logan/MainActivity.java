@@ -25,6 +25,7 @@ package test.logan.dianping.com.logan;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -46,6 +47,7 @@ public class MainActivity extends Activity {
     private static final String TAG = MainActivity.class.getName();
 
     private TextView mTvInfo;
+    private TextView mTvContent;
     private EditText mEditIp;
     private RealSendLogRunnable mSendLogRunnable;
 
@@ -80,7 +82,10 @@ public class MainActivity extends Activity {
         Button button = (Button) findViewById(R.id.write_btn);
         Button sendBtn = (Button) findViewById(R.id.send_btn);
         Button logFileBtn = (Button) findViewById(R.id.show_log_file_btn);
+        Button logContentBtn = (Button) findViewById(R.id.show_log_content_btn);
         mTvInfo = (TextView) findViewById(R.id.info);
+        mTvContent = (TextView) findViewById(R.id.content);
+        mTvContent.setMovementMethod(ScrollingMovementMethod.getInstance());
         mEditIp = (EditText) findViewById(R.id.send_ip);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +104,12 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 loganFilesInfo();
+            }
+        });
+        logContentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loganFilesContent();
             }
         });
     }
@@ -145,4 +156,18 @@ public class MainActivity extends Activity {
             mTvInfo.setText(info.toString());
         }
     }
+
+    private void loganFilesContent() {
+        Map<String, String> map = Logan.getAllFilesContent();
+        if (map != null) {
+            StringBuilder info = new StringBuilder();
+            for (String entry : map.keySet()) {
+                info.append("文件名称：").append(entry).append("\n");
+                String content = map.get(entry);
+                info.append(content).append("\n");
+            }
+            mTvContent.setText(info.toString());
+        }
+    }
+
 }

@@ -1,5 +1,10 @@
 # Logan
 
+感谢美团点评集团移动端基础日志组件Logan，经过美团公司各个部门的生产验证，值得学习借鉴。
+只是有点复杂，日志没有必要加密，没有什么隐私信息，而且加密解密会耗费客户端和服务端的系统资源；
+其实只要压缩就可以了，还可以节省流量并且加快速度，而且明文还便于读取调试，直接把保存在SD卡上的文件读出来就可以看具体信息；
+我把库的加密解密模块去掉了，而且增加了读取文件显示用来调试的功能。
+
 [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat)](https://raw.githubusercontent.com/Meituan-Dianping/Logan/master/LICENSE)
 [![Release Version](https://img.shields.io/github/release/Meituan-Dianping/Logan.svg?maxAge=2592000?style=flat-square)](https://github.com/Meituan-Dianping/Logan/releases)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/Meituan-Dianping/Logan/pulls)
